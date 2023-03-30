@@ -13,7 +13,7 @@ $title = filter_input(INPUT_POST, 'title');
 // [解説！]ガード節になっている
 if (!empty($title) && !empty($content)) {
     $sql = 'INSERT INTO `pages`(`title`, `content`) VALUES(:title, :content)';
-    $statement = $pdo->prepare();
+    $statement = $pdo->prepare($sql);
     $statement->bindValue(':title', $title, PDO::PARAM_STR);
     $statement->bindValue(':content', $content, PDO::PARAM_STR);
     $statement->execute();
